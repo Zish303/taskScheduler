@@ -1,0 +1,34 @@
+<app-header />
+<div class="add-task-form">
+    <form [formGroup]="form" (ngSubmit)="onAddTask()">
+        <div class="form-group">
+            <textarea #textarea id="taskDescription" name="description" class="form-control"
+                placeholder="Enter task description" [formControl]="form.controls.description"></textarea>
+            @if(checkInvalidDescription()){
+            <p>Please enter a description</p>
+            }
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Add Task</button>
+        </div>
+    </form>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3>Tasks</h3>
+    </div>
+    <div class="card-body">
+        <h4 *ngIf="(taskData.length == 0)">You have no tasks at the moment.</h4>
+        <ul class="task-list">
+            <li class="task-item" *ngFor="let task of taskData">
+                <input type="checkbox" class="task-checkbox" [(ngModel)]="task.completed">
+                @if(!task.completed){
+                <span class="task-text">{{task.description}}</span>}
+                @else {
+                <del class="task-text">{{task.description}}</del>}
+                <button class="btn-edit" [routerLink]="['/edit/'+task.id]">Edit</button>
+                <button class="btn-delete" (click)="onDelete(task.id)">Delete</button>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<app-header />
+<div class="card">
+    <div class="card-header">
+        <h3>Tasks</h3>
+    </div>
+    <div class="card-body">
+        <h4 *ngIf="(taskData.length == 0)">You have no tasks at the moment.</h4>
+        <ul class="task-list">
+            <li class="task-item" *ngFor="let task of taskData">
+                @if(task.id == id){
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="errMsg">
+                        <textarea #textarea name="description" value=" Enter task description"
+                            [formControl]="form.controls.description"></textarea>
+                        @if(checkInvalidDescription()){
+                        <p class="err-msg">Please enter a description</p>
+                        }
+                    </div>
+                    <button class="btn-edit" (click)="onSubmit()">Submit</button>
+                    <button class="btn-delete" (click)="onCancel()">Cancel</button>
+                </form>
+                }
+                @else {
+                <span class="task-text">{{task.description}}</span>
+                }
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">TaskScheduler</a>
+    <div class="navbar-nav ml-auto">
+        <div class="nav-item dropdown" (click)="toggleDropdown($event)">
+            <button class="button">Menu</button>
+            <div class="dropdown-content" [class.show]="dropdownOpen">
+                <a class="dropdown-item" [routerLink]="['/change-password']">Change Password</a>
+                <a class="dropdown-item" (click)="onLogout()">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>

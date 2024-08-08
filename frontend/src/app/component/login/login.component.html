@@ -1,0 +1,46 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">TaskScheduler</a>
+    <div class="navbar-nav ml-auto login">
+        <button [routerLink]="['/register']" routerLinkActive="router-link-active" class="button mr-2"
+            type="button">Signup</button>
+    </div>
+</nav>
+<div class="login-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="username">Email</label>
+        <input type="email" id="email" name="email" ngModel [formControl]="form.controls.email">
+
+
+        <!-- Validating email input -->
+        @if(checkInvalidEmail()){
+        <p>Invalid email</p>
+        }
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" maxlength="20" [formControl]="form.controls.password">
+        @if(checkInvalidPassword()){
+        <p>Password is invalid(Mininmum length = 6)</p>
+        }
+
+        <button type="submit">Login</button>
+    </form>
+    @if(statusCode==500){
+    <div class="error-message">
+        <span>Network error. Please check your connection and try again.</span>
+    </div>
+    }
+
+    @if(statusCode==404){
+    <div class="error-message">
+        <span>No account found with this email. Please signup.</span>
+    </div>
+    }
+
+    @if(statusCode==401){
+    <div class="error-message">
+        <span>Incorrect email or password. Please try again.</span>
+    </div>
+    }
+
+
+</div>
