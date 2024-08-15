@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {} // creating/requesting http client
+  constructor(private http: HttpClient, private router: Router) { } // creating/requesting http client
 
   url: string = 'http://localhost:3000/user/';
 

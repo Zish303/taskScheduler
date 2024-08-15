@@ -2,6 +2,7 @@ const con = require("../connection");
 const jwt = require("jsonwebtoken");
 const queries = require("../dbQueries");
 const bcrypt = require("bcrypt");
+require('dotenv').config()
 
 module.exports = {
   login: (req, res) => {
@@ -23,7 +24,7 @@ module.exports = {
               const payload = {
                 id: result[0].id,
               };
-              const token = jwt.sign(payload, "secret_key");
+              const token = jwt.sign(payload, process.env.TOKEN);
               res.status(200).send({
                 message: "Login successful",
                 token,
@@ -63,7 +64,7 @@ module.exports = {
                 const payload = {
                   id: result[0].id,
                 };
-                const token = jwt.sign(payload, "secret_key");
+                const token = jwt.sign(payload, process.env.TOKEN);
                 res.status(200).send({
                   message: "Signup successful",
                   token,
