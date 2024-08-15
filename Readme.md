@@ -8,6 +8,8 @@ A simple and efficient TODO application to keep track of your tasks. Built with 
 - Mark tasks as completed.
 - User authentication (login, signup).
 - Token based authentication using JWT.
+- Can be deployed using Docker containers.
+- Supports Docker Compose for easy setup with 'docker-compose up'.
 
 ## Usage
 
@@ -53,3 +55,8 @@ A simple and efficient TODO application to keep track of your tasks. Built with 
 #### Marking a Task as Completed
 
 1. Click the checkbox next to the task to mark it as completed.
+
+### Docker Containers
+
+1. Ensure Docker is installed on your machine.
+2. Build the Docker images and start the containers using command: docker-compose up
