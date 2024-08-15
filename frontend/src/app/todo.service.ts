@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class TodoService {
-  constructor(private http: HttpClient) {} // creating/requesting http client
+  constructor(private http: HttpClient) { } // creating/requesting http client
 
   uid?: number = 3;
   taskData?: any;
 
-  url: string = 'http://localhost:3000/todo/';
+  url: string = 'https://todo-backend-ck5v.onrender.com/todo/';
 
   getTodo() {
     return this.http.get(this.url);

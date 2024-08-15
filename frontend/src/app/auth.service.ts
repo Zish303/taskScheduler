@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) { } // creating/requesting http client
 
-  url: string = 'http://localhost:3000/user/';
+  url: string = 'https://todo-backend-ck5v.onrender.com/user/';
 
   getUser(event: any) {
     return this.http.post(this.url + 'login/', event.value);
